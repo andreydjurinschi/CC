@@ -51,25 +51,25 @@ ________
 
 ```json
 {
-    "Version": "2012-10-17",
+  "Version": "2012-10-17",
   "Statement": [
-      {
-          "Sid": "ListOnlyTheseBuckets",
+    {
+      "Sid": "ListOnlyTheseBuckets",
       "Effect": "Allow",
       "Action": ["s3:ListBucket"],
       "Resource": [
-          "arn:aws:s3:::cc-lab4-pub-k05",
+        "arn:aws:s3:::cc-lab4-pub-k05",
         "arn:aws:s3:::cc-lab4-priv-k05"
       ]
     },
     {
-        "Sid": "ReadWritePublicBucketLimited",
+      "Sid": "ReadWritePublicBucketLimited",
       "Effect": "Allow",
       "Action": ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"],
       "Resource": "arn:aws:s3:::cc-lab4-pub-k05/*"
     },
     {
-        "Sid": "LogsRWButOnlyUnderLogsPrefix",
+      "Sid": "LogsRWButOnlyUnderLogsPrefix",
       "Effect": "Allow",
       "Action": ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"],
       "Resource": "arn:aws:s3:::cc-lab4-priv-k05/logs/*"
@@ -176,5 +176,31 @@ upload: private\logs\activity.csv to s3://cc-lab4-priv-k05/logs/activity.csv
 
 Storage Class в Amazon S3 — это метаданные объекта, которые определяют его поведение по отношению к стоимости хранения, доступности и времени восстановления. Проще говоря, класс хранения выбирает, как и за сколько AWS будет хранить данные: высокодоступно и дорого, экономно с редким доступом или архивно с длительным временем извлечения.
 
+8. загружаем статический сайт 
+
+![](/lab04/photos/Screenshot_11.png)
+
+```bash
+C:\Users\Calculator\CC-1\lab04\site>aws s3 cp . s3://cc-lab4-web-k05/ --recursive
+upload: .\index.html to s3://cc-lab4-web-k05/index.html
+upload: .\index.js to s3://cc-lab4-web-k05/index.js
+upload: .\styles.css to s3://cc-lab4-web-k05/styles.css
+```
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::cc-lab4-web-k05/*"
+    }
+  ]
+}
+
+```
 
 
