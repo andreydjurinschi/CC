@@ -62,12 +62,6 @@ Subnet Group — это набор подсетей в разных зонах �
 
 ![](https://i.imgur.com/AQyIJLc.png)
 
-
-/*
-admin
-project-rds-mysql-prod.cbca6umaah80.eu-central-1.rds.amazonaws.com
-ainaioiOIAI
-*/
 _____
 
 
@@ -311,7 +305,7 @@ public class GeneralRepository {
 
     /**
      =======================
-     МЕТОДЫ ОБНОВЛЕНИЯ И ТД
+     МЕТОДЫ UPDATE И ТД
      ======================= 
      */
 
